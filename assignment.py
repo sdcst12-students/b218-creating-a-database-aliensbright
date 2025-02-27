@@ -87,10 +87,9 @@ r3 = cursor.fetchall()
 
 ###Testing to see if I can add a customer
 
-cus1 = ['Donald','Trump','2024561111','donaldtrump@gmail.com','1600 Pennsylvania Avenue NW','Washington','20500']
-
-query = f"insert into vetcustomersinfo (fname,lname,phone,email,address,city,pCode) values ('{cus1[0]}','{cus1[1]}','{cus1[2]}','{cus1[3]}','{cus1[4]}','{cus1[5]}','{cus1[6]}');"
-print(query)
-cursor.execute(query)
-cursor.execute('select * from vetcustomersinfo')
-print(cursor.fetchall())
+while True:
+    print('Please enter in all the info below,\nremove any spaces.')
+    fname = input('First Name: \n')
+    lname = input('Last Name: \n')
+    phone = input('Phone Number (input only the digits):\n')
+    email = input('Full Email:\n')
