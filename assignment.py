@@ -41,7 +41,7 @@ search for multiple criteria"""
 
 file = 'dbase.db'
 connection = sqlite3.connect(file)
-print(connection)
+#print(connection)
 
 cursor = connection.cursor()
 
@@ -58,7 +58,7 @@ create table if not exists vetcustomersinfo (
     pCode tinytext);
 """
 cursor.execute(qCustomerInfoCreation)
-cursor.fetchall()
+r1 = cursor.fetchall()
 
 qPetInfoCreation = """
 create table if not exists petInfo (
@@ -70,7 +70,7 @@ create table if not exists petInfo (
     ownerID tinytext);
 """
 cursor.execute(qPetInfoCreation)
-cursor.fetchall()
+r2 = cursor.fetchall()
 
 qVisitsCreation = """
 create table if not exists visits (
@@ -82,6 +82,15 @@ create table if not exists visits (
     paid tinyint);
 """
 cursor.execute(qVisitsCreation)
-cursor.fetchall()
+r3 = cursor.fetchall()
 
-#cursor.execute('pragma table_info()')
+
+###Testing to see if I can add a customer
+
+cus1 = ['Donald','Trump','2024561111','donaldtrump@gmail.com','1600 Pennsylvania Avenue NW','Washington','20500']
+
+query = f"insert into vetcustomersinfo (fname,lname,phone,email,address,city,pCode) values ('{cus1[0]}','{cus1[1]}','{cus1[2]}','{cus1[3]}','{cus1[4]}','{cus1[5]}','{cus1[6]}');"
+print(query)
+cursor.execute(query)
+cursor.execute('select * from vetcustomersinfo')
+print(cursor.fetchall())
