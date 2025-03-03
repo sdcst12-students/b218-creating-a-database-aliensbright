@@ -86,10 +86,29 @@ r3 = cursor.fetchall()
 
 
 ###Testing to see if I can add a customer
+listOfEmail = []
+listOfPhone = []
+
 
 while True:
-    print('Please enter in all the info below,\nremove any spaces.')
-    fname = input('First Name: \n')
-    lname = input('Last Name: \n')
-    phone = input('Phone Number (input only the digits):\n')
-    email = input('Full Email:\n')
+    print('\nPlease enter in all the info below,\nremove any spaces.')
+    fname = input(' First Name: ')
+    lname = input(' Last Name: ')
+    phone = input(' Phone Number (input only the digits): ')
+    email = input(' Full Email: ')
+    address = input(' Home Address: ')
+    city = input(' City: ')
+    pCode = input(' Postal Code: ')
+    try:
+        for i in listOfEmail:
+            assert email != i
+        listOfEmail.append(email)
+    except:
+        print("Current email already exists.\nPlease use another email.")
+    try:
+        assert int(phone)
+        for i in listOfPhone:
+            assert email != i
+        listOfPhone.append(phone)
+    except:
+        print("Current phone number already exists.\nPlease use another phone number.")
