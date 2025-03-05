@@ -48,7 +48,6 @@ cursor = connection.cursor()
 
 qCustomerInfoCreation = """
 create table if not exists vetcustomersinfo (
-    id integer primary key autoincrement,
     fname tinytext,
     lname tinytext,
     phone tinytext,
@@ -91,24 +90,35 @@ listOfPhone = []
 
 
 while True:
-    print('\nPlease enter in all the info below,\nremove any spaces.')
-    fname = input(' First Name: ')
-    lname = input(' Last Name: ')
-    phone = input(' Phone Number (input only the digits): ')
-    email = input(' Full Email: ')
-    address = input(' Home Address: ')
-    city = input(' City: ')
-    pCode = input(' Postal Code: ')
-    try:
-        for i in listOfEmail:
-            assert email != i
-        listOfEmail.append(email)
-    except:
-        print("Current email already exists.\nPlease use another email.")
-    try:
-        assert int(phone)
-        for i in listOfPhone:
-            assert email != i
-        listOfPhone.append(phone)
-    except:
-        print("Current phone number already exists.\nPlease use another phone number.")
+    while True:
+        print('\nPlease enter in all the info below,\nremove any spaces.')
+        fname = input('  First Name: ')
+        lname = input('  Last Name: ')
+        phone = input('  Phone Number (input only the digits): ')
+        email = input('  Full Email: ')
+        address = input('  Home Address: ')
+        city = input('  City: ')
+        pCode = input('  Postal Code: ')
+        try:
+            for i in listOfEmail:
+                assert email != i
+            listOfEmail.append(email)
+        except:
+            print("Current email already exists.\nPlease use another email.")
+            break
+        try:
+            assert int(phone)
+            for i in listOfPhone:
+                assert email != i
+            listOfPhone.append(phone)
+        except:
+            listOfEmail.remove(email)
+            print("Current phone number already exists or is invalid.\nPlease use another phone number.")
+            break
+        print(f'Please check your info,\n First Name: {fname}\n Last Name: {lname}\n Phone Number: {phone}\n Email: {email}\n Address: {address}\n City: {city}\n Postal Code: {pCode}')
+        check = input('Answer "Yes" if all of the info is correct,\nAnswer "No" if some info is incorrect:')
+        if check=='Yes':
+            cursor.execute(f"insert into vetcustomersinfo (fname,lname,phone,email,address,city,pCode) values ('{fname}','{lname}','{phone}','{email}','{address}','{city}','{pCode}');")
+            print('Input Complete\n')
+        else:
+            print('Please reenter all of your info.')
