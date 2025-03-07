@@ -99,21 +99,20 @@ while True:
         address = input('  Home Address: ')
         city = input('  City: ')
         pCode = input('  Postal Code: ')
-        try:
+        try: #Ensure that only email matches one custonmer
             for i in listOfEmail:
                 assert email != i
             listOfEmail.append(email)
         except:
-            print("Current email already exists.\nPlease use another email.")
-            break
-        try:
+            print("Email already linked to a customer.\n Would you like to replace demographics?") 
+        try: #Ensure that only one phone number matches one customer
             assert int(phone)
             for i in listOfPhone:
                 assert email != i
             listOfPhone.append(phone)
         except:
             listOfEmail.remove(email)
-            print("Current phone number already exists or is invalid.\nPlease use another phone number.")
+            print("\nCurrent phone number alread.\nPlease use another phone number.")
             break
         print(f'\n\nPlease check your info,\n\n  First Name: {fname}\n  Last Name: {lname}\n  Phone Number: {phone}\n  Email: {email}\n  Address: {address}\n  City: {city}\n  Postal Code: {pCode}')
         check = input('\nAnswer "Yes" if all of the info is correct,\nAnswer "No" if some info is incorrect: ')
