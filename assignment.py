@@ -115,10 +115,12 @@ while True:
             listOfEmail.remove(email)
             print("Current phone number already exists or is invalid.\nPlease use another phone number.")
             break
-        print(f'Please check your info,\n First Name: {fname}\n Last Name: {lname}\n Phone Number: {phone}\n Email: {email}\n Address: {address}\n City: {city}\n Postal Code: {pCode}')
-        check = input('Answer "Yes" if all of the info is correct,\nAnswer "No" if some info is incorrect:')
+        print(f'\n\nPlease check your info,\n\n  First Name: {fname}\n  Last Name: {lname}\n  Phone Number: {phone}\n  Email: {email}\n  Address: {address}\n  City: {city}\n  Postal Code: {pCode}')
+        check = input('\nAnswer "Yes" if all of the info is correct,\nAnswer "No" if some info is incorrect: ')
         if check=='Yes':
             cursor.execute(f"insert into vetcustomersinfo (fname,lname,phone,email,address,city,pCode) values ('{fname}','{lname}','{phone}','{email}','{address}','{city}','{pCode}');")
             print('Input Complete\n')
         else:
+            listOfEmail.remove(email)
+            listOfPhone.remove(phone)
             print('Please reenter all of your info.')
