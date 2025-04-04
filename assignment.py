@@ -1,6 +1,10 @@
 #!python3
 
 import sqlite3
+import tkinter as tk
+window = tk.Tk()
+window.title("tk")
+window.maxsize(1600,800)
 
 """Assignment: Create a database for a veterinarian. You will need to create your own tables and choose the variable types that best suit these fields/columns. 
 There will be 3 tables: 
@@ -123,3 +127,37 @@ while True:
             listOfEmail.remove(email)
             listOfPhone.remove(phone)
             print('Please reenter all of your info.')
+
+
+window.title("tk")
+window.maxsize(400,400)
+
+
+txt1 = tk.Entry(window, width=10, highlightthickness=2)
+txt1.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+
+
+txt2 = tk.Entry(window, width=10, highlightthickness=2)
+txt2.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+
+
+label = tk.Label(window, text="x", width= 10)
+button = tk.Button(window, text="=", width= 10)
+
+
+txt3 = tk.Entry(window, width=10, highlightthickness=2)
+txt3.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+txt1.grid(row=0, column=0)
+label.grid(row=0, column=1)
+txt2.grid(row=0, column=2)
+button.grid(row=0,column=3)
+txt3.grid(row=0,column=4)
+
+
+window.mainloop()
