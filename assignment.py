@@ -93,6 +93,40 @@ listOfEmail = []
 listOfPhone = []
 
 
+
+window.title("tk")
+window.minsize(200,400)
+
+
+txt1 = tk.Entry(window, width=10, highlightthickness=2)
+txt1.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+
+
+txt2 = tk.Entry(window, width=10, highlightthickness=2)
+txt2.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+
+
+label = tk.Label(window, text="x", width= 10)
+button = tk.Button(window, text="=", width= 10)
+
+
+txt3 = tk.Entry(window, width=10, highlightthickness=2)
+txt3.config(highlightcolor= "black" , highlightbackground= "black")
+
+
+txt1.grid(row=0, column=0)
+label.grid(row=0, column=1)
+txt2.grid(row=0, column=2)
+button.grid(row=0,column=3)
+txt3.grid(row=0,column=4)
+
+
+window.mainloop()
+
 while True:
     while True:
         print('\nPlease enter in all the info below,\nremove any spaces.')
@@ -127,37 +161,3 @@ while True:
             listOfEmail.remove(email)
             listOfPhone.remove(phone)
             print('Please reenter all of your info.')
-
-
-window.title("tk")
-window.maxsize(400,400)
-
-
-txt1 = tk.Entry(window, width=10, highlightthickness=2)
-txt1.config(highlightcolor= "black" , highlightbackground= "black")
-
-
-
-
-txt2 = tk.Entry(window, width=10, highlightthickness=2)
-txt2.config(highlightcolor= "black" , highlightbackground= "black")
-
-
-
-
-label = tk.Label(window, text="x", width= 10)
-button = tk.Button(window, text="=", width= 10)
-
-
-txt3 = tk.Entry(window, width=10, highlightthickness=2)
-txt3.config(highlightcolor= "black" , highlightbackground= "black")
-
-
-txt1.grid(row=0, column=0)
-label.grid(row=0, column=1)
-txt2.grid(row=0, column=2)
-button.grid(row=0,column=3)
-txt3.grid(row=0,column=4)
-
-
-window.mainloop()
